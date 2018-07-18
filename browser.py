@@ -18,7 +18,7 @@ class Browser:
         CHandler = urllib2.HTTPCookieProcessor(cookielib.CookieJar())
         self.newbrowser = urllib2.build_opener(CHandler)
         self.newbrowser.addheaders = [
-            ('User-agent', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:19.0) Gecko/20100101 Firefox/19.0')]
+            ('User-agent', 'Mozilla/5.0 (X11; Debian; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0')] # Mozilla/5.0 (X11; Debian; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
         urllib2.install_opener(self.newbrowser)
         self.error_dict={} # to be returned by get_html if any thing goes wrong
 
@@ -82,9 +82,16 @@ class Browser:
         return link_total
 
 
+def test(link):
+    b = Browser()
+    html = b.get_html(link)
+    print(html)
 
-b = Browser()
-html = b.get_html('http://timesofindia.indiatimes.com/archive/year-2001,month-2.cms')
-print html
-
-print html.find('starttime-36937.cms')                                                                                                                            
+def main():
+    #test('http://timesofindia.indiatimes.com/archive/year-2001,month-2.cms')
+    test('https://trends24.in/india/')
+    
+if __name__ =='__main__':
+    main()
+    
+                                                                                                                              
