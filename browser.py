@@ -2,6 +2,7 @@ import urllib2
 import cookielib
 import zlib
 
+op_dir = 'saved_html'
 class Browser:
     """Initializes the Browser class, handler the cookies,set User-Agent
     Function :- get_html , get_link
@@ -82,14 +83,24 @@ class Browser:
         return link_total
 
 
-def test(link):
+def test(link, fname):
     b = Browser()
     html = b.get_html(link)
-    print(html)
+    try:
+        os.mkdir(op_dir)
+    except:
+        print '%s dir already exists' %(op_dir))
+        pass
+    fname = ''
+    fname_total = '%s/%s' %( op_dir,. fname)
+    fout = open(fname_total, 'w')
+    fout.write(html)
+    fout.close()
+   
 
 def main():
     #test('http://timesofindia.indiatimes.com/archive/year-2001,month-2.cms')
-    test('https://trends24.in/india/')
+    test('https://trends24.in/india/', trends24)
     
 if __name__ =='__main__':
     main()
