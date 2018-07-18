@@ -38,35 +38,35 @@ class Browser:
         except urllib2.HTTPError as e:
             self.error_dict['e_code'] = e.code
             self.error_dict['e_reason']=e.reason
-            print 'HTTPError in link=%s' %(link)
-            print 'error code:: ' , e.code
-            print 'reason ::' , e.reason 
+            print('HTTPError in link=%s' %(link))
+            print('error code:: ' , e.code)
+            print('reason ::' , e.reason) 
             return(self.error_dict)
 
         except urllib2.URLError as e: 
             
             self.error_dict['e_code'] = 12 # general  URLError code assigned by me
             self.error_dict['e_reason'] = 'URLError' # 
-            print 'UrlError in link=%s' %(link)
+            print('UrlError in link=%s' %(link))
             return(self.error_dict)
 
         except socket.timeout :
             time.sleep(60*5) # wait for 5 min after socket timeout  Error occured
             self.error_dict['e_code'] = 678 # assigned bY me 
             self.error_dict['e_reason']= 'SocketTimeOut'
-            print 'SocketTimeout Error in link=%s' %(link)
+            print('SocketTimeout Error in link=%s' %(link))
             return(self.error_dict)
 
         except KeyboardInterrupt: 
             self.error_dict['e_code'] = 789 # assigned bY me
             self.error_dict['e_reason']='KeyboardInterrupt'
-            print 'Keyboard Interrupt in link=%s' %(link)
+            print('Keyboard Interrupt in link=%s' %(link))
             return(self.error_dict)
 
 
     def get_link(self, html, patt=None):
         """ Get link of story for each day from html page of the day, takes html page and special pattern for the story link if any """
-        print 'scrapping:::: \n'
+        print('scrapping:::: \n')
         soup = bs4.BeautifulSoup(html)        
         pat = r'http://www.thehindu.com/todays-paper/.*/article(\d)+.ece' # link pattern of the story for 2006-2013
         patt = re.compile(pat)
@@ -81,9 +81,10 @@ class Browser:
             #return link_n'''
         return link_total
 
-b = Browser()
 
+
+b = Browser()
 html = b.get_html('http://timesofindia.indiatimes.com/archive/year-2001,month-2.cms')
 print html
 
-print html.find('starttime-36937.cms')`                                                                                                                                 
+print html.find('starttime-36937.cms')                                                                                                                            
