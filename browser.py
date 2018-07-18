@@ -1,6 +1,8 @@
 import urllib2
 import cookielib
 import zlib
+import os
+
 
 op_dir = 'saved_html'
 class Browser:
@@ -89,10 +91,10 @@ def test(link, fname):
     try:
         os.mkdir(op_dir)
     except:
-        print '%s dir already exists' %(op_dir))
+        print('%s dir already exists' %(op_dir))
         pass
-    fname = ''
-    fname_total = '%s/%s' %( op_dir,. fname)
+    #fname = ''
+    fname_total = '%s/%s.html' %( op_dir, fname)
     fout = open(fname_total, 'w')
     fout.write(html)
     fout.close()
@@ -100,7 +102,7 @@ def test(link, fname):
 
 def main():
     #test('http://timesofindia.indiatimes.com/archive/year-2001,month-2.cms')
-    test('https://trends24.in/india/', trends24)
+    test('https://trends24.in/india/', 'trends24')
     
 if __name__ =='__main__':
     main()
