@@ -99,7 +99,6 @@ def test(link, fname):
     fout.write(html)
     fout.close()
    
-
 def main():
     #test('http://timesofindia.indiatimes.com/archive/year-2001,month-2.cms')
     test('https://trends24.in/india/', 'trends24')
